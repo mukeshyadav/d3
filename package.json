@@ -1,0 +1,20 @@
+{
+  "name": "d3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "python3 -m http.server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mukeshyadav/d3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mukeshyadav/d3/issues"
+  },
+  "homepage": "https://github.com/mukeshyadav/d3#readme"
+}
