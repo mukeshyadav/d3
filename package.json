@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "python3 -m http.server",
+    "start": "npm run open",
+    "open": "concurrently \"http-server -a localhost -p 1111\" \"open http://localhost:1111/\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/mukeshyadav/d3/issues"
   },
-  "homepage": "https://github.com/mukeshyadav/d3#readme"
+  "homepage": "https://github.com/mukeshyadav/d3#readme",
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "http-server": "^0.12.3"
+  }
 }
