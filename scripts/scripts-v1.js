@@ -21,4 +21,22 @@ async function createChart(elemId) {
   return circle;
 }
 
-createChart("#chart");
+async function createMultipleCircles(elemId, svgData) {
+  let svg = await createCanvas(elemId);
+
+  return svg
+    .selectAll("circle")
+    .data(svgData)
+    .enter()
+    .append("circle")
+    .attr("cx", (d, i) => {
+      return i * 50 + 25;
+    })
+    .attr("cy", 25)
+    .attr("r", d => {
+      return d;
+    })
+    .attr("fill", "red");
+}
+
+createMultipleCircles("#chart", [25, 20, 10, 5, 12, 15]);
