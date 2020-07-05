@@ -19,6 +19,11 @@ function createBarChart() {
       .scaleLinear()
       .domain([0, 828])
       .range([0, 400]);
+    var x = d3
+      .scaleLog()
+      .domain([0, 828])
+      .range([0, 400])
+      .base(10);
     rectangles
       .enter()
       .append("rect")
