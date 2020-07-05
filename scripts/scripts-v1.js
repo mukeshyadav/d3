@@ -6,8 +6,8 @@ function createCanvas(elemId) {
   return d3
     .select(elemId)
     .append("svg")
-    .attr("height", 1000)
-    .attr("width", 1000);
+    .attr("height", 400)
+    .attr("width", 400);
 }
 
 function createBarChart() {
@@ -15,11 +15,15 @@ function createBarChart() {
     d.forEach(d => (d.height = +d.height));
     let svg = createCanvas("#chart");
     let rectangles = svg.selectAll("rect").data(d);
+    var y = d3
+      .scaleLinear()
+      .domain([0, 828])
+      .range([0, 400]);
     rectangles
       .enter()
       .append("rect")
       .attr("height", (d, i) => {
-        return d.height;
+        return y(d.height);
       })
       .attr("width", 20)
       .attr("fill", "red")
@@ -50,4 +54,4 @@ function createCircle() {
   });
 }
 
-createCircle();
+createBarChart();
