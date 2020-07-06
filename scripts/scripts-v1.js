@@ -13,6 +13,7 @@ function createCanvas(elemId) {
 function createBarChart() {
   return getData("./data/building.json").then(function(d) {
     d.forEach(d => (d.height = +d.height));
+    let buildings = d.map(build => build.name);
     let svg = createCanvas("#chart");
     let rectangles = svg.selectAll("rect").data(d);
     var y = d3
@@ -20,21 +21,18 @@ function createBarChart() {
       .domain([0, 828])
       .range([0, 400]);
     var x = d3
-      .scaleLog()
-      .domain([0, 828])
+      .scaleBand()
+      .domain(buildings)
       .range([0, 400])
-      .base(10);
+      .paddingInner(0.3)
+      .paddingOuter(0.3);
     rectangles
       .enter()
       .append("rect")
-      .attr("height", (d, i) => {
-        return y(d.height);
-      })
-      .attr("width", 20)
+      .attr("height", (d, i) => y(d.height))
+      .attr("width", x.bandwidth)
       .attr("fill", "red")
-      .attr("x", (d, i) => {
-        return i * 30;
-      });
+      .attr("x", (d, i) => x(d.name));
   });
 }
 
